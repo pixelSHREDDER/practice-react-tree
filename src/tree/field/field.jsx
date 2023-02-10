@@ -1,54 +1,58 @@
 import React, { Fragment } from 'react';
 
-export default function Field(props) {
-    const [name, type, parent, onChange] = props;
-
+export default function Field({name, type, parent, onChange}) {
     const id = `${parent}_${name}`;
     const spacedName = name.replace(/([A-Z])/g, " $1");
     const readableName = `${spacedName.charAt(0).toUpperCase()}${spacedName.slice(1)}`;
 
-    if (typeof(type) === 'array') {
+    if (Array.isArray(type)) {
         return (
             <Fragment>
-                <label for={id}>{readableName}</label>
+                <label htmlFor={id}>{readableName}</label>
                 <select name={name} id={id}>
-                    {type.map(option => <option value={option}>{option}</option>)}
+                    <option value="" selected>--Select an option--</option>
+                    {type.map((option, index) => <option key={`${id}_${index}`} value={option}>{option}</option>)}
                 </select>
             </Fragment>
         );
-    } else if (type === 'boolean') {
+    } else if (typeof type !== 'string') {
+        console.log('derp');
+        return;
+    }
+
+    if (type === 'boolean') {
         return (
             <Fragment>
-                <label for={id}>{readableName}</label>
+                <label htmlFor={id}>{readableName}</label>
                 <input
                     type="checkbox"
                     id={id}
                     name={name}
-                    value={data}
+                    value={false}
                     onChange={onChange} />
             </Fragment>
         );
     } else if (type === 'string') {
         return (
             <Fragment>
-                <label for={id}>{readableName}</label>
+                <label htmlFor={id}>{readableName}</label>
                 <input
                     type="text"
                     id={id}
                     name={name}
-                    value={data}
+                    value={''}
                     onChange={onChange} />
             </Fragment>
         );
     } else if (type === 'number') {
         return (
             <Fragment>
-                <label for={id}>{readableName}</label>
+                <label htmlFor={id}>{readableName}</label>
                 <input
                     type="number"
                     id={id}
                     name={name}
-                    value={data}
+                    value={0}
                     onChange={onChange} />
             </Fragment>
         );
