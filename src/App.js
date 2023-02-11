@@ -1,21 +1,26 @@
 import React, {useEffect, useState} from 'react';
-import Field from './tree/field/field';
 import Tree from './tree/tree';
-import './App.css';
-import jsonData from './data'
+import Field from './tree/field/field'
+import jsonData from './data';
+import bigJsonData from './bigdata';
 
 function App() {
   const [data, setData] = useState();
+  const [isBigData, setIsBigData] = useState(false);
+
+const toggleData = () => {
+  !!isBigData ? setData(jsonData) : setData(bigJsonData);
+  setIsBigData(!isBigData);
+}
+
   useEffect(() => {
-    //TODO: add simulated loader to simulate data fetching
     setData(jsonData);
   }, []);
 
   return (
-    <div className="App">
-      {!!data &&
-        <Tree data={data} />
-      }
+    <div className="App" style={{width: '700px'}}>
+      <Field name="useBigData" type="boolean" parent="none" onChange={toggleData} />
+      {!!data && <Tree data={data} /> }
     </div>
   );
 }

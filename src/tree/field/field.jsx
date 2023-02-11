@@ -1,15 +1,15 @@
 import React, { Fragment } from 'react';
+import { getReadableText } from '../../util/transforms';
 
 export default function Field({name, type, parent, onChange}) {
     const id = `${parent}_${name}`;
-    const spacedName = name.replace(/([A-Z])/g, " $1");
-    const readableName = `${spacedName.charAt(0).toUpperCase()}${spacedName.slice(1)}`;
+    const readableName = getReadableText(name);
 
     if (Array.isArray(type)) {
         return (
             <Fragment>
                 <label htmlFor={id}>{readableName}</label>
-                <select name={name} id={id} defaultValue="">
+                <select name={name} id={id} defaultValue="" onChange={onChange}>
                     <option value="">--Select an option--</option>
                     {type.map((option, index) => <option key={`${id}_${index}`} value={option}>{option}</option>)}
                 </select>
@@ -23,12 +23,15 @@ export default function Field({name, type, parent, onChange}) {
         return (
             <Fragment>
                 <label htmlFor={id}>{readableName}</label>
-                <input
-                    type="checkbox"
-                    id={id}
-                    name={name}
-                    value={false}
-                    onChange={onChange} />
+                <span>
+                    <input
+                        type="checkbox"
+                        id={id}
+                        name={name}
+                        value={false}
+                        style={{marginLeft: 0}}
+                        onChange={onChange} />
+                </span>
             </Fragment>
         );
     } else if (type === 'string') {

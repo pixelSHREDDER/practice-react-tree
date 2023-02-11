@@ -1,0 +1,86 @@
+.subtree, .subtree ul {
+    list-style: none;
+    margin-top: 0;
+    padding: 0;
+}
+.subtree ul {
+    margin-left: 14px;
+}
+.subtree ul li {
+    margin: 0;
+    padding: 0 7px;
+    border-left: 1px solid rgb(100,100,100);
+    background: transparent;
+}
+.subtree ul li:last-of-type {
+    border-left: none;
+}
+.subtree ul li:before {
+    position: relative;
+    top: -0.3em;
+    height: 1em;
+    width: 12px;
+    color: white;
+    border-bottom: 1px solid rgb(100,100,100);
+    content: "";
+    display: inline-block;
+    left: -7px;
+ }
+ .subtree ul li:last-of-type:before {
+    border-left: 1px solid rgb(100,100,100);   
+ }
+
+ .subtree ul li > div:first-child {
+    display: inline-block;
+    width: 100%;
+    margin: 0 -7px 0 -6px;
+}
+.subtree li:not(.subtree):nth-of-type(odd) {
+    background-color: #eee ;
+}
+
+.subtree {
+    transition: 0.3s;
+}
+.subtreeTitle {
+    display: block;
+    font-size: 1em;
+}
+.subtreeHeader {
+    display: flex;
+    justify-content: flex-start;
+    padding: 2px 20px 2px 0;
+    color: #737373;
+}
+.subtreeContent {
+    width: calc(100% + 7px);
+    overflow: hidden;
+    transition: height 0.2s ease-in-out;
+}
+.subtreeArrow {
+    display: inline-block;
+    vertical-align: middle;
+    width: 0; 
+    height: 0;
+}
+.subtreeArrowDown {
+    border-left: 8px solid transparent;
+    border-right: 8px solid transparent;
+    border-top: 8px solid #737373;
+}
+.subtreeArrowRight {
+    border-top: 8px solid transparent;
+    border-bottom: 8px solid transparent;
+    border-left: 8px solid #737373;
+    margin: 0 2px 0 6px;
+}
+.subtreeIconButton {
+    cursor: pointer;
+    background-color: transparent;
+    background-repeat: no-repeat;
+    border: none;
+    cursor: pointer;
+    overflow: hidden;
+    outline: none;
+    padding: 0 0.8em 0 0;
+}

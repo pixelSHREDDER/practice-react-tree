@@ -1,0 +1,47 @@
+{
+    "parent": "string",
+    "components": {
+        "unit": {
+            "unitType": [ "UNIT", "MISSILE", "STRUCTURE"],
+            "unitStats": {
+                "radius": "number",
+                "invulnerable": "boolean",
+                "ground": "boolean",
+                "air": "boolean",
+                "selectable": "boolean",
+                "targetPriority": "string",
+                "selectionPriority": "string",
+                "ignoreCollision": "boolean"
+            },
+            "health": {
+                "maxHealth": "string",
+                "startHealth": "string",
+                "regeneration": "string",
+                "regenerationDelay": "string"
+            },
+            "unitValue": {
+                "goldCost": "string"
+            }
+        },
+        "inventory": {
+            "maxSlots": "number",
+            "slotStats": {
+                "itemType": "string",
+                "consumable": "boolean",
+                "timeLimited": "boolean",
+                "useCost": {
+                    "goldCost": "number"
+                },
+                "itemStatus": {
+                    "amountRemaining": "number",
+                    "useConditions": {
+                        "immolated": "boolean",
+                        "poisoned": "boolean",
+                        "sleeping": "boolean",
+                        "minHealth": "number"
+                    }
+                }
+            }
+        }
+    }
+}
