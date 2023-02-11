@@ -9,14 +9,13 @@ export default function Field({name, type, parent, onChange}) {
         return (
             <Fragment>
                 <label htmlFor={id}>{readableName}</label>
-                <select name={name} id={id}>
-                    <option value="" selected>--Select an option--</option>
+                <select name={name} id={id} defaultValue="">
+                    <option value="">--Select an option--</option>
                     {type.map((option, index) => <option key={`${id}_${index}`} value={option}>{option}</option>)}
                 </select>
             </Fragment>
         );
     } else if (typeof type !== 'string') {
-        console.log('derp');
         return;
     }
 

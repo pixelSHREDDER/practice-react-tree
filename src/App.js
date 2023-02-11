@@ -1,13 +1,21 @@
+import React, {useEffect, useState} from 'react';
 import Field from './tree/field/field';
+import Tree from './tree/tree';
 import './App.css';
+import jsonData from './data'
 
 function App() {
+  const [data, setData] = useState();
+  useEffect(() => {
+    //TODO: add simulated loader to simulate data fetching
+    setData(jsonData);
+  }, []);
+
   return (
     <div className="App">
-      <Field name={'checkboxTest'} type={'boolean'} onChange={(e) => console.log(e)} /><br/>
-      <Field name={'numberTest'} type={'number'} onChange={(e) => console.log(e)} /><br/>
-      <Field name={'textTest'} type={'string'} onChange={(e) => console.log(e)} /><br/>
-      <Field name={'arrayTest'} type={['test1', 'test2', 'test3']} onChange={(e) => console.log(e)} />
+      {!!data &&
+        <Tree data={data} />
+      }
     </div>
   );
 }
